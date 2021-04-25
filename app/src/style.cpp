@@ -2,12 +2,11 @@
 
 #include <QtQml>
 
-Style::Style(QObject* parent) : QObject(parent)
+Style::Style(QObject *parent) : QObject(parent)
 {
 }
 
-
-const QVariantMap& Style::colors() const
+const QVariantMap &Style::colors() const
 {
     return m_colors;
 }

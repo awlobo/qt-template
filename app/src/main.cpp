@@ -12,27 +12,28 @@ int main(int argc, char *argv[])
 #endif
 
     qCInfo(lc, "------------------------------------");
-    qCInfo(lc, "Starting Pix4Dscan %s", VERSION_NAME);
+    qCInfo(lc, "Starting project_name %s", VERSION_NAME);
 
-    QGuiApplication::setApplicationName(QStringLiteral("Scan"));
-    QGuiApplication::setOrganizationName(QStringLiteral("Pix4D"));
-    QGuiApplication::setOrganizationDomain(QStringLiteral("com.pix4d"));
+    QGuiApplication::setApplicationName(QStringLiteral("project_name"));
+    QGuiApplication::setOrganizationName(QStringLiteral("awlobo"));
+    QGuiApplication::setOrganizationDomain(QStringLiteral("com.awlobo"));
     Q_ASSERT(QFile::exists(":/qtquickcontrols2.conf"));
-
 
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
 
-//    qmlRegisterType<Style>("awlobo.project_name.style", 1, 0, "Style");
+    //    qmlRegisterType<Style>("awlobo.project_name.style", 1, 0, "Style");
     Style style;
     engine.rootContext()->setContextProperty("Style", &style);
 
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
+    QObject::connect(
+        &engine, &QQmlApplicationEngine::objectCreated,
+        &app, [url](QObject *obj, const QUrl &objUrl) {
+            if (!obj && url == objUrl)
+                QCoreApplication::exit(-1);
+        },
+        Qt::QueuedConnection);
     engine.load(url);
 
     return app.exec();

@@ -9,7 +9,7 @@ QMAKE_CXXFLAGS += -std=c++17 \
 DEFINES += \
         QT_DISABLE_DEPRECATED_BEFORE=0x060000 \
         COMMIT_ID=\\\"$$system(git describe --always)\\\" \
-        VERSION_NAME=\\\"$$system(git describe --abbrev=0)\\\"
+        VERSION_NAME=\\\"$$system(git describe --abbrev=0 --tags)\\\"
 
 
 QT += \

@@ -12,18 +12,16 @@ class Style : public QObject
 public:
     Style(QObject *parent = 0);
 
-    const QVariantMap&
+    const QVariantMap &
     colors() const;
 
 signals:
 private:
     QVariantMap m_colors = {
-        { QString("primary"), QColor("#b6d2ef") },
-        { QString("primaryLight"), QColor("#38536D") },
-        { QString("secondary"), QColor("#0091ea") },
-        { QString("secondaryLight"), QColor("#dadada") },
-        { QString("accent"), QColor("#69f0ae") }
-    };
+        {QString("primary"), QColor("#64b5f6")},
+        {QString("primaryLight"), QColor("#9be7ff")},
+        {QString("primaryDark"), QColor("#2286c3")},
+        {QString("accent"), QColor("#f50057")}};
 };
 
 #endif // STYLE_H
